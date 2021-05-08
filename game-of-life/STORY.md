@@ -531,4 +531,26 @@ I was thinking about the simplest implementation needed for oscillator patterns.
 
 I think I might use the Set implementation from https://www.npmjs.com/package/@thi.ng/associative
 
+---
 
+I'm now implementing the Oscillators
+
+I'm also thinking of just extending the native Set instead of using any library. Let's see! :) More like a `Cells` class which encapsulates a set of cells or extends a set of cells. If it's encapsulating, I might have to do more and introduce a new Set implementation however. Hmm
+
+Not to mention, the output should still be a normal set and not be some custom set!
+
+---
+
+Now, with the first Oscillators pattern, we have Blinkers.
+
+In this case, we just need to implement two rules - if an alive cell does not have 2 or 3 alive neighbor cells, it dies or else, put in other words, if it has less than 2 alive neighbor cells, it dies. And then other one is about dead cells becoming alive when they have exactly 3 alive neighbors
+
+Actually the wikipedia condenses the rules into three simple rules -
+
+- Alive cells remain alive if there are exactly 2 or 3 neighbors
+- Dead cells become alive if there are exactly 3 neighbors
+- Any other cells become dead if they are alive, or remain dead if they are dead
+
+I could follow this implementation too :P This is way more easier to jot down and understand, though there are many ways to say the same thing
+
+First, I could - iterate through the alive cells and filter down the cells which will still remain alive in the next generation

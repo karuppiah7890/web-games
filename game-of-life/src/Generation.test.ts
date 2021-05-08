@@ -90,5 +90,35 @@ describe("Generation", () => {
         );
       });
     });
+
+    describe("Oscillators", () => {
+      test("Blinker", () => {
+        // Period: 2
+        const cell1 = new Cell(0, 0);
+        const cell2 = new Cell(1, 0);
+        const cell3 = new Cell(2, 0);
+        const initialGeneration = new Generation(
+          new Set([cell1, cell2, cell3])
+        );
+
+
+        const firstGenCell1 = new Cell(1, 1);
+        const firstGenCell2 = new Cell(1, 0);
+        const firstGenCell3 = new Cell(1, -1);
+        const expectedFirstGeneration = new Generation(
+          new Set([firstGenCell1, firstGenCell2, firstGenCell3])
+        );
+
+        const firstGeneration = initialGeneration.nextGeneration();
+        expect(firstGeneration).toStrictEqual(
+          expectedFirstGeneration
+        );
+
+        const secondGeneration = firstGeneration.nextGeneration();
+        expect(secondGeneration).toStrictEqual(
+          initialGeneration
+        );
+      });
+    });
   });
 });
