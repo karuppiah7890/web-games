@@ -411,3 +411,116 @@ dist/
 
 0 directories, 1 file
 ```
+
+---
+
+Now I'm reading the game of life wikipedia - [link](https://en.wikipedia.org/wiki/Conway's_Game_of_Life)
+
+I'm going to start writing tests with these [example patterns](https://en.wikipedia.org/wiki/Conway's_Game_of_Life#Examples_of_patterns)
+
+And the [rules](https://en.wikipedia.org/wiki/Conway's_Game_of_Life#Rules) are pretty clear
+
+For the code, I was thinking of having a Generation class which has a method to go to next generation and then a sugar coat method to go to a future generation given the number of ticks / evolutions
+
+I can have a constructor to create a Generation and then call next on it to get the next generation
+
+Or I can go functional and try to use functions which take a generation and then give the next generation as output, same for future generation with an extra input for number of ticks. Hmm
+
+I think I'll go with Object Oriented for now and write methods. It can be changed later if needed :)
+
+I just wanna follow - make it work, make it beautiful, make it fast. So, let's get started!
+
+For cells, I was planning to have a set of cells. I guess it makes sense to have a set. I have seen solutions before :P So I know that a set can be useful because the cell coordinates (x, y) cannot be duplicated in the list of cells, if no duplication is possible or allowed, then we can go with a set 🤷 instead of a list
+
+Previously I have worked with lists and done a lot of things. But I don't remember much now. I guess I'm going to try to solve from scratch as I don't remember much though I do remember some people showing just a few lines of code in Clojure and other functional languages to solve this problem! 😮
+
+Anyways, getting back to the code!
+
+I'm writing tests now, which compile but fail
+
+I'm thinking how to represent a grid now. I mean, I know that it's a 2D grid so I can use X and Y coordinates. Apparently the Game Of Life is an infinite grid. How do I mention the alive cells in this?
+
+Oh yes, I need to take only alive cells as input for generation I think. It doesn't make sense to take any extra input!
+
+In an infinite grid, I'm wondering how to give input. Hmm
+
+Something to note is - I have noticed some folks mentioning to consider it an infinite grid and to consider the corners and edges of the grid connecting to the other side in a wrapped manner and hence to let the alive cells moving towards the bottom will wrap and come from the top. It's more like a finite grid with wrapped edges and corners.
+
+I'm guessing for now I'll just work with an infinite grid and I can surely give an input with the origin - (0, 0) where X and Y are 0 and 0! :)
+
+Even though I'm using `Set`s, I'm not exactly getting the features of a set
+
+```
+Set(4) {
+      Cell { x: 0, y: 0 },
+      Cell { x: 1, y: 0 },
+      Cell { x: 0, y: 1 },
+      Cell { x: 1, y: 0 }
+    }
+```
+
+I'm using `Set<Cell>` and it's not checking if two cells are equal. It simply checks the reference I think and not the value itself
+
+https://duckduckgo.com/?t=ffab&q=Typescript+set+type&ia=web
+
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set
+
+https://duckduckgo.com/?q=typescript+set+of+objects&t=ffab&ia=web&iax=qa
+
+https://stackoverflow.com/questions/39950597/typescript-set-of-objects#39953846
+
+Looks like I need to define my own Set for that! Hmm
+
+For now I think I'm going to defer it and just use the Set and write tests and implement things assuming the set works. Hmm, but yeah, I have to come back and ensure that the set works or else it's gonna have lot of problems
+
+For example, I don't know how I can use the `has`, `add` and other methods if it cannot even find using value and instead find using reference and do the same for `add` too
+
+https://duckduckgo.com/?t=ffab&q=javascript+override+%3D%3D%3D+&ia=web
+
+https://duckduckgo.com/?q=javascript+override+equality&t=ffab&ia=web
+
+https://duckduckgo.com/?t=ffab&q=javascript+set+of+objects&ia=web
+
+https://medium.com/coding-at-dawn/how-to-use-set-to-filter-unique-items-in-javascript-es6-196c55ce924b
+
+Anyways, I'm going to ignore if there are duplicates and see if I can work on an algorithm that can still work even if there are duplicates, or better, avoid duplicates in case there are any
+
+Let's begin with the implementation! :)
+
+As of now, for still lives, I don't really have to implement anything lol. I just have to send back whatever input I get and the unit tests will pass ;) :D test driven development :D :D
+
+For the oscillators, I have thought of one implementation
+
+Since I get only the list of alive cells, I can iterate through all alive cells and check if they are still alive in the next gen or not. If they are not, discard them. Next get all the unique dead cells surrounding the alive cells - how? Get all the surrounding neighbor cells for all the alive cells and check which ones are alive using the alive cells set and then get the dead cells and put it in a set. Now iterate through the dead cells and find if the dead cell will become alive or not. If it becomes alive, take it, or else discard it.
+
+All this happens simultaneously according to the algorithm. So, we can see how to avoid losing the input data and having a separate output data where we put all the data and it can be as simultaneous as possible.
+
+Why check only the dead cells surrounding the alive cells? What about the others? Well, a dead cell can only become alive if there are alive cells near it. If alive cells are near dead cells that can be possibly become alive, then for alive cells, the dead cells that can possibly become alive are near the same alive cells.
+
+I think that logic will work out! :) This way I also don't have to think about a finite grid! ;) I can think of finite grids when I do UI or maybe still have infinite grids and not show the things outside of the grid shown on the screen - that's visible to the user
+
+---
+
+I was simply checking out the set collection libraries in npm
+
+https://www.npmjs.com/search?q=typescript%20set
+
+https://www.npmjs.com/search?q=typescript%20set%20collection
+
+https://www.npmjs.com/package/ts-set-utils
+
+https://www.npmjs.com/package/scl
+
+https://samvv.github.io/scl.js/
+
+https://samvv.github.io/scl.js/interfaces/set.html
+
+https://www.npmjs.com/search?q=typescript%20collection
+
+https://www.npmjs.com/package/type-fest
+
+https://www.npmjs.com/search?q=typescript%20set%20datastructure
+
+https://www.npmjs.com/package/@thi.ng/associative
+
+
