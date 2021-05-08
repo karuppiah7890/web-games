@@ -523,4 +523,12 @@ https://www.npmjs.com/search?q=typescript%20set%20datastructure
 
 https://www.npmjs.com/package/@thi.ng/associative
 
+---
+
+I finished the still lives patterns
+
+I was thinking about the simplest implementation needed for oscillator patterns. Or I might just implement it all
+
+I think I might use the Set implementation from https://www.npmjs.com/package/@thi.ng/associative
+
 
