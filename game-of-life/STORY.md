@@ -327,3 +327,87 @@ Ran all test suites.
 Yay! :D
 
 Oops, I need to make typescript AND ts-node as dev dependencies
+
+---
+
+Okay, since I added a `ts` file in the root of the project, I need to mention
+that only the `src` files need to be considered for compilation I think and also mention the same for root directory. Currently it looks like this -
+
+```bash
+$ npx tsc
+
+$ tree dist/
+dist/
+├── GameOfLife.js
+├── jest.config.js
+└── src
+    ├── GameOfLife.js
+    └── GameOfLife.test.js
+
+1 directory, 4 files
+```
+
+I knew I had to use just Js and not Ts. Anyways, I'll just do something about this
+
+When I include `src` as the `rootDir`, I get this -
+
+```bash
+$ npx tsc
+error TS6059: File '/Users/karuppiahn/oss/github.com/karuppiah7890/web-games/game-of-life/jest.config.ts' is not under 'rootDir' '/Users/karuppiahn/oss/github.com/karuppiah7890/web-games/game-of-life/src'. 'rootDir' is expected to contain all source files.
+  The file is in the program because:
+    Matched by include pattern '**/*' in '/Users/karuppiahn/oss/github.com/karuppiah7890/web-games/game-of-life/tsconfig.json'
+
+
+Found 1 error.
+```
+
+Maybe I could exclude it? Exclude the jest config file
+
+```json
+{
+    "compilerOptions": {
+        "outDir": "dist",
+        "rootDir": "src"
+    },
+    "exclude": ["jest.config.ts"],
+    "extends": "@tsconfig/recommended/tsconfig.json"
+}
+```
+
+Okay, I have done that
+
+```bash
+$ npx tsc
+
+$ tree dist/
+dist/
+├── GameOfLife.js
+└── GameOfLife.test.js
+
+0 directories, 2 files
+```
+
+I also need to exclude test files
+
+```json
+{
+    "compilerOptions": {
+        "outDir": "dist",
+        "rootDir": "src"
+    },
+    "exclude": ["jest.config.ts", "src/**/*.test.ts"],
+    "extends": "@tsconfig/recommended/tsconfig.json"
+}
+```
+
+Okay! Things are better now! :)
+
+```bash
+$ npx tsc
+
+$ tree dist/
+dist/
+└── GameOfLife.js
+
+0 directories, 1 file
+```

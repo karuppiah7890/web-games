@@ -1,6 +1,8 @@
 {
     "compilerOptions": {
-        "outDir": "dist"
+        "outDir": "dist",
+        "rootDir": "src"
     },
+    "exclude": ["jest.config.ts", "src/**/*.test.ts"],
     "extends": "@tsconfig/recommended/tsconfig.json"
 }
