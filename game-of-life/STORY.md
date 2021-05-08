@@ -228,3 +228,100 @@ https://duckduckgo.com/?q=conways+game+of+life&t=ffab&ia=web
 https://en.wikipedia.org/wiki/Conway's_Game_of_Life
 
 and then start writing tests and some code! :)
+
+I'm not gonna be adding Linters like ESLint and Formatters like Prettier for now. I'll do that later. And then maybe also add the fancy pre commit and pre push hooks to run lints, formatters, checks, tests etc in the future
+
+Now let's get to adding Jest test framework. It should be pretty easy I think! :)
+
+https://jestjs.io/
+
+https://jestjs.io/docs/getting-started
+
+I tried using
+
+```bash
+$ npm install --save-dev jest
+
+$ npx jest --init
+```
+
+And it created a very big file. I'm just going to use a small file and I think the config is the same as another project I have with Jest
+
+https://gitlab.com/snapping-shrimp/cocreate-remote-vscode/-/blob/main/jest.config.js
+
+It just has an extra ts-jest for TypeScript usage in Test code with type checking
+
+https://jestjs.io/docs/getting-started#using-typescript
+
+So I'll need that too!
+
+I don't think I'll need babel if I use ts-jest. So I'm gonna try it out! :)
+
+```bash
+$ npm i -D @types/jest
+```
+
+https://github.com/kulshekhar/ts-jest
+
+https://kulshekhar.github.io/ts-jest/
+
+https://kulshekhar.github.io/ts-jest/docs/
+
+https://kulshekhar.github.io/ts-jest/docs/getting-started/installation
+
+```bash
+$ npm i -D ts-jest
+```
+
+I need to add `preset` as `ts-jest`
+
+I tried `npx ts-jest config:init` but it didn't work. It instead created a JavaScript Jest config file instead of modifying the TypeScript Jest config file
+
+https://kulshekhar.github.io/ts-jest/docs/getting-started/presets
+
+I created a dummy test file with a dummy test. I'm trying to run the Jest command to run the test
+
+```bash
+$ npx jest
+Error: Jest: Failed to parse the TypeScript config file /Users/karuppiahn/oss/github.com/karuppiah7890/web-games/game-of-life/jest.config.ts
+  Error: Jest: 'ts-node' is required for the TypeScript configuration files. Make sure it is installed
+Error: Cannot find module 'ts-node'
+Require stack:
+- /Users/karuppiahn/oss/github.com/karuppiah7890/web-games/game-of-life/node_modules/jest-config/build/readConfigFileAndSetRootDir.js
+- /Users/karuppiahn/oss/github.com/karuppiah7890/web-games/game-of-life/node_modules/jest-config/build/index.js
+- /Users/karuppiahn/oss/github.com/karuppiah7890/web-games/game-of-life/node_modules/jest-cli/build/cli/index.js
+- /Users/karuppiahn/oss/github.com/karuppiah7890/web-games/game-of-life/node_modules/jest-cli/bin/jest.js
+- /Users/karuppiahn/oss/github.com/karuppiah7890/web-games/game-of-life/node_modules/jest/bin/jest.js
+    at readConfigFileAndSetRootDir (/Users/karuppiahn/oss/github.com/karuppiah7890/web-games/game-of-life/node_modules/jest-config/build/readConfigFileAndSetRootDir.js:150:13)
+    at async readConfig (/Users/karuppiahn/oss/github.com/karuppiah7890/web-games/game-of-life/node_modules/jest-config/build/index.js:217:18)
+    at async readConfigs (/Users/karuppiahn/oss/github.com/karuppiah7890/web-games/game-of-life/node_modules/jest-config/build/index.js:406:26)
+    at async runCLI (/Users/karuppiahn/oss/github.com/karuppiah7890/web-games/game-of-life/node_modules/@jest/core/build/cli/index.js:230:59)
+    at async Object.run (/Users/karuppiahn/oss/github.com/karuppiah7890/web-games/game-of-life/node_modules/jest-cli/build/cli/index.js:163:37)
+```
+
+Oops, I missed to install `ts-jest` I think
+
+No, I missed to install `ts-node` it seems
+
+I think this is because I used a TypeScript configuration file for Jest. Right :P
+
+```bash
+$ npm i -S ts-node
+```
+
+It works!! :D
+
+```bash
+$ npx jest
+ PASS  src/GameOfLife.test.ts
+  Game Of Life
+    ✓ dummy test (3 ms)
+
+Test Suites: 1 passed, 1 total
+Tests:       1 passed, 1 total
+Snapshots:   0 total
+Time:        1.694 s
+Ran all test suites.
+```
+
+Yay! :D
