@@ -216,3 +216,15 @@ src/
 ```
 
 I'm also git ignoring the `dist` directory
+
+I'm adding tasks in the repo project
+
+I need to add Jest testing framework
+
+And then read about Game Of Life and recall some stuff - rules , patterns
+
+https://duckduckgo.com/?q=conways+game+of+life&t=ffab&ia=web
+
+https://en.wikipedia.org/wiki/Conway's_Game_of_Life
+
+and then start writing tests and some code! :)
