@@ -2,7 +2,7 @@
   "name": "game-of-life",
   "version": "0.1.0",
   "description": "Game of Life",
-  "main": "index.js",
+  "main": "dist/GameOfLife.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -17,5 +17,8 @@
   "private": true,
   "dependencies": {
     "typescript": "^4.2.4"
+  },
+  "devDependencies": {
+    "@tsconfig/recommended": "^1.0.1"
   }
 }
