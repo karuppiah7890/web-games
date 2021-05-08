@@ -554,3 +554,13 @@ Actually the wikipedia condenses the rules into three simple rules -
 I could follow this implementation too :P This is way more easier to jot down and understand, though there are many ways to say the same thing
 
 First, I could - iterate through the alive cells and filter down the cells which will still remain alive in the next generation
+
+---
+
+Finally I have implemented it all.
+
+I had to make some changes to the way I stored the set of cells and include `has` and `add` methods. I will have to write tests for those 🙈
+
+I also implemented in a very messy manner. I gotta see how I can make it better. But to start off, I want to add more tests with the other patterns to see if it all works fine
+
+The code has the explanation of how it has been implemented. After iterating through alive cells and checking which ones will still remain alive, I iterated through the dead cells near the alive cells and checked which one would become alive :)
