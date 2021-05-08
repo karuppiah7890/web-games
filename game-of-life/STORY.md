@@ -564,3 +564,5 @@ I had to make some changes to the way I stored the set of cells and include `has
 I also implemented in a very messy manner. I gotta see how I can make it better. But to start off, I want to add more tests with the other patterns to see if it all works fine
 
 The code has the explanation of how it has been implemented. After iterating through alive cells and checking which ones will still remain alive, I iterated through the dead cells near the alive cells and checked which one would become alive :)
+
+After adding more tests, instead of beautifying the engine, I want to build the UI to see this in effect! :D
