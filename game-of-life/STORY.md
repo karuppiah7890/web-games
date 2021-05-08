@@ -325,3 +325,5 @@ Ran all test suites.
 ```
 
 Yay! :D
+
+Oops, I need to make typescript AND ts-node as dev dependencies
