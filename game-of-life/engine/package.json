@@ -6,7 +6,8 @@
   "scripts": {
     "test": "jest",
     "clean": "rm -rf dist/",
-    "build": "npm run clean && tsc"
+    "build": "npm run clean && tsc",
+    "prepublishOnly": "npm run build"
   },
   "keywords": [
     "game-of-life",
