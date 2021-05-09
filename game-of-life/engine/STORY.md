@@ -566,3 +566,13 @@ I also implemented in a very messy manner. I gotta see how I can make it better.
 The code has the explanation of how it has been implemented. After iterating through alive cells and checking which ones will still remain alive, I iterated through the dead cells near the alive cells and checked which one would become alive :)
 
 After adding more tests, instead of beautifying the engine, I want to build the UI to see this in effect! :D
+
+---
+
+I have also added a test for the Toad pattern
+
+I'm wondering if I should give away the initial generation of all these patterns! :D Give away as part of the package that is!
+
+Or I guess I'll just copy paste this stuff for now 🤷 Maybe later I can export constants if needed!
+
+I'm planning to publish this as an npm package for now! :D
