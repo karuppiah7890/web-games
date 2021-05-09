@@ -576,3 +576,21 @@ I'm wondering if I should give away the initial generation of all these patterns
 Or I guess I'll just copy paste this stuff for now 🤷 Maybe later I can export constants if needed!
 
 I'm planning to publish this as an npm package for now! :D
+
+---
+
+For packaging and publishing, I'm adding scripts to clean the dist directory and then build the package using TypeScript compiler and do this automatically whenever the publish command is executed
+
+I'm also ignoring unnecessary files from the npm package by checking the package tar ball and then ignoring the unnecessary files using `.npmignore`
+
+I was actually going to ignore package.json too, lol. I realized that's the only file that has information around the package metadata apart from the tar ball name containing package name and version. The package.json has information about the description, keywords and also the main thing - the entry point of the package under the `main`. So, fortunately, I didn't ignore it.
+
+I'm going to test this whole thing locally actually
+
+Some links I browsed through while checking this packaging stuff
+
+https://duckduckgo.com/?t=ffab&q=npm+pack&ia=web
+
+https://bugfender.com/blog/how-to-create-an-npm-package/
+
+https://bugfender.com/blog/how-to-create-an-npm-package/
