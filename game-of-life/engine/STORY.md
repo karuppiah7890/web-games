@@ -1,4 +1,4 @@
-# Game of Life
+# Game of Life Engine
 
 I'm planning to build the game of life application. I have tried it twice before, in Java and then in Golang. This time I plan to try it in TypeScript and also see a visual representation of it ;) :D
 
