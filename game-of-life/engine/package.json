@@ -1,7 +1,7 @@
 {
-  "name": "game-of-life",
+  "name": "game-of-life-engine",
   "version": "0.1.0",
-  "description": "Game of Life",
+  "description": "Game of Life Engine",
   "main": "dist/GameOfLife.js",
   "scripts": {
     "test": "jest"
