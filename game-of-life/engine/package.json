@@ -2,7 +2,7 @@
   "name": "game-of-life-engine",
   "version": "0.1.0",
   "description": "Game of Life Engine",
-  "main": "dist/GameOfLife.js",
+  "main": "dist/Generation.js",
   "scripts": {
     "test": "jest"
   },
